@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Efficiency Over Scale – Prof. Anjit Raja R | Rathinam College ISC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1209;
+    --ink-2: #3b2f1e;
+    --ink-3: #6b5c47;
+    --ink-4: #9c8c77;
+    --paper: #faf7f2;
+    --paper-2: #f2ede3;
+    --paper-3: #e8e0d0;
+    --accent: #b5001f;
+    --accent-2: #8a0016;
+    --gold: #c9973b;
+    --gold-2: #a67c28;
+    --teal: #0d6e72;
+    --navy: #162d42;
+    --col: 68px;
+    --gap: 20px;
+  }
+
+  html { font-size: 16px; background: #d4cbbf; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ─── MASTHEAD ─────────────────────────────────────────────── */
+  .masthead {
+    background: var(--navy);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .masthead-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .institution-block {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .inst-logo {
+    width: 52px; height: 52px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .inst-logo svg { width: 32px; height: 32px; }
+
+  .inst-text { }
+  .inst-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+  .inst-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9.5px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .isc-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .isc-pill {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+
+  .isc-year {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* Hero title band */
+  .masthead-hero {
+    padding: 56px 48px 44px;
+    position: relative;
+  }
+
+  .masthead-hero::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.012) 40px,
+      rgba(255,255,255,0.012) 41px
+    );
+    pointer-events: none;
+  }
+
+  .article-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .label-line {
+    width: 32px; height: 1.5px;
+    background: var(--gold);
+  }
+
+  .label-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .hero-kicker {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 6vw, 62px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+
+  .hero-title .accent-word {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.35;
+    margin-top: 14px;
+    max-width: 640px;
+  }
+
+  .hero-meta-bar {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    flex-wrap: wrap;
+  }
+
+  .author-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.2);
+  }
+
+  .author-info { }
+  .author-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .author-title-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+
+  .author-linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    color: #5bb1e8;
+    text-decoration: none;
+    margin-top: 3px;
+    transition: color 0.2s;
+  }
+  .author-linkedin:hover { color: #90cef4; }
+  .author-linkedin svg { width: 11px; height: 11px; }
+
+  .meta-sep {
+    width: 1px; height: 36px;
+    background: rgba(255,255,255,0.12);
+  }
+
+  .meta-item {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.45);
+  }
+  .meta-item strong {
+    display: block;
+    font-size: 12px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+
+  /* ─── DECORATIVE RULE ──────────────────────────────────────── */
+  .chapter-rule {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--gold) 50%, var(--teal) 100%);
+  }
+
+  /* ─── BODY ─────────────────────────────────────────────────── */
+  .body-wrap {
+    padding: 0 48px;
+    background: var(--paper);
+  }
+
+  /* ─── ABSTRACT ─────────────────────────────────────────────── */
+  .abstract-box {
+    margin: 40px 0 0;
+    padding: 28px 32px;
+    background: var(--paper-2);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+  }
+
+  .abstract-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .abstract-text {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--ink-2);
+    font-style: italic;
+  }
+
+  .keywords {
+    margin-top: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--ink-3);
+  }
+  .keywords strong { color: var(--ink-2); }
+
+  /* ─── SECTION HEADINGS ─────────────────────────────────────── */
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 52px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-number::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--paper-3);
+  }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  h3.subsection-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--paper-3);
+  }
+
+  h4.mini-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-2);
+    margin-top: 24px;
+    margin-bottom: 8px;
+  }
+
+  /* ─── BODY TEXT ─────────────────────────────────────────────── */
+  p.body {
+    font-size: 15.5px;
+    line-height: 1.8;
+    color: var(--ink-2);
+    margin-bottom: 16px;
+  }
+
+  p.body:first-of-type::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--accent);
+    float: left;
+    line-height: 0.75;
+    margin-right: 8px;
+    margin-top: 8px;
+  }
+
+  p.body + p.body { text-indent: 1.5em; }
+
+  /* ─── PULLQUOTE ─────────────────────────────────────────────── */
+  blockquote.pullquote {
+    margin: 36px -24px;
+    padding: 24px 32px;
+    border-top: 2.5px solid var(--accent);
+    border-bottom: 2.5px solid var(--accent);
+    background: transparent;
+  }
+
+  blockquote.pullquote p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.45;
+    text-align: center;
+  }
+
+  blockquote.pullquote cite {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: center;
+    margin-top: 10px;
+    font-style: normal;
+  }
+
+  /* ─── TABLES ─────────────────────────────────────────────────── */
+  .table-wrap {
+    margin: 36px 0;
+    overflow-x: auto;
+  }
+
+  .table-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .table-caption {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  thead tr {
+    background: var(--navy);
+    color: #fff;
+  }
+  thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  tbody tr:nth-child(odd) { background: var(--paper-2); }
+  tbody tr:nth-child(even) { background: var(--paper); }
+  tbody tr:hover { background: #ede7d9; }
+
+  tbody td {
+    padding: 9px 14px;
+    color: var(--ink-2);
+    border-bottom: 1px solid var(--paper-3);
+    line-height: 1.4;
+    vertical-align: top;
+  }
+
+  .table-source {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--ink-4);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* ─── DATA CALLOUTS ─────────────────────────────────────────── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--paper-3);
+    margin: 36px 0;
+    border: 1px solid var(--paper-3);
+  }
+
+  .stat-card {
+    background: var(--paper);
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--ink-3);
+    line-height: 1.4;
+  }
+
+  /* ─── VISUAL TIMELINE BAND ──────────────────────────────────── */
+  .timeline {
+    margin: 36px 0;
+    position: relative;
+    padding-left: 0;
+  }
+
+  .timeline-heading {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-2);
+    margin-bottom: 16px;
+  }
+
+  .timeline-track {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline-track::before {
+    content: '';
+    position: absolute;
+    left: 7px; top: 6px; bottom: 6px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--gold) 50%, var(--teal) 100%);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+
+  .timeline-date {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .timeline-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+
+  .timeline-text strong { color: var(--navy); }
+
+  /* ─── INFO BOXES ─────────────────────────────────────────────── */
+  .info-box {
+    margin: 28px 0;
+    padding: 20px 24px;
+    background: var(--paper-2);
+    border-radius: 4px;
+    border-left: 3px solid var(--teal);
+  }
+
+  .info-box-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+
+  .info-box p {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--ink-2);
+    margin-bottom: 6px;
+  }
+
+  /* ─── INLINE CHART BARS ─────────────────────────────────────── */
+  .bar-chart {
+    margin: 28px 0;
+  }
+
+  .bar-chart-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-2);
+    margin-bottom: 14px;
+  }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .bar-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--ink-2);
+    width: 120px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 22px;
+    background: var(--paper-3);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+  }
+
+  .bar-val {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  /* ─── SECTION DIVIDER ───────────────────────────────────────── */
+  .s-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 44px 0 0;
+  }
+
+  .s-divider-line { flex: 1; height: 1px; background: var(--paper-3); }
+  .s-divider-ornament {
+    display: flex; gap: 4px;
+  }
+  .s-divider-ornament span {
+    width: 6px; height: 6px; border-radius: 50%;
+  }
+
+  /* ─── GEOPOLITICAL VISUAL ───────────────────────────────────── */
+  .geo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--paper-3);
+    margin: 28px 0;
+    border: 1px solid var(--paper-3);
+  }
+
+  .geo-card {
+    background: var(--paper);
+    padding: 20px 18px;
+  }
+
+  .geo-card-head {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid;
+  }
+
+  .geo-card-us .geo-card-head { color: #1a3a6b; border-color: #1a3a6b; }
+  .geo-card-cn .geo-card-head { color: var(--accent); border-color: var(--accent); }
+  .geo-card-eu .geo-card-head { color: var(--teal); border-color: var(--teal); }
+
+  .geo-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .geo-card ul li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11.5px;
+    color: var(--ink-2);
+    line-height: 1.5;
+    padding: 3px 0 3px 14px;
+    position: relative;
+  }
+  .geo-card ul li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--ink-4);
+    font-size: 18px;
+    line-height: 1.1;
+  }
+
+  /* ─── CONCLUSION ─────────────────────────────────────────────── */
+  .conclusion-box {
+    margin: 40px 0;
+    padding: 32px 36px;
+    background: var(--navy);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .conclusion-box::before {
+    content: '"';
+    position: absolute;
+    right: 28px; top: -20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 160px;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .conclusion-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .conclusion-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 12px;
+  }
+
+  /* ─── REFERENCES ─────────────────────────────────────────────── */
+  .references-wrap {
+    margin: 44px 0 0;
+    padding: 28px 0;
+    border-top: 2px solid var(--paper-3);
+  }
+
+  .references-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 16px;
+  }
+
+  .ref-item {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--ink-3);
+    line-height: 1.6;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+  }
+  .ref-item::before {
+    content: attr(data-n);
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ─── FOOTER ─────────────────────────────────────────────────── */
+  .article-footer {
+    background: var(--ink);
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-left { }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .footer-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .footer-copy {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.3);
+    text-align: right;
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .masthead-top, .masthead-hero, .body-wrap, .article-footer { padding-left: 24px; padding-right: 24px; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .geo-grid { grid-template-columns: 1fr; }
+    blockquote.pullquote { margin-left: 0; margin-right: 0; }
+  }
+
+  @media print {
+    html { background: #fff; }
+    body { max-width: 100%; box-shadow: none; }
+    .masthead { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     MASTHEAD
+═══════════════════════════════════════════════════════════════ -->
+<header class="masthead">
+
+  <!-- Top bar: institution identity -->
+  <div class="masthead-top">
+    <div class="institution-block">
+      <div class="inst-logo">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="15" fill="none" stroke="#162d42" stroke-width="1"/>
+          <path d="M16 4 L28 22 L4 22 Z" fill="#162d42" opacity="0.85"/>
+          <circle cx="16" cy="16" r="4" fill="#162d42"/>
+          <path d="M10 22 L16 8 L22 22" stroke="#162d42" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <div class="inst-text">
+        <div class="inst-name">Rathinam College of Arts &amp; Science</div>
+        <div class="inst-sub">Innovation &amp; Startup Cell · Coimbatore</div>
+      </div>
+    </div>
+    <div class="isc-badge">
+      <div class="isc-pill">ISC Research</div>
+      <div class="isc-year">© 2026</div>
+    </div>
+  </div>
+
+  <!-- Hero title zone -->
+  <div class="masthead-hero">
+    <div class="article-label">
+      <div class="label-line"></div>
+      <div class="label-text">Technology Policy · Artificial Intelligence</div>
+      <div class="label-line"></div>
+    </div>
+
+    <div class="hero-kicker">Featured Research Article</div>
+
+    <h1 class="hero-title">
+      <span class="accent-word">Efficiency</span> Over Scale
+    </h1>
+    <div class="hero-subtitle">
+      The Rise of Chinese Open-Weight AI Models and Their Geopolitical Implications in 2025–2026
+    </div>
+
+    <div class="hero-meta-bar">
+      <div class="author-block">
+        <div class="author-avatar">AR</div>
+        <div class="author-info">
+          <div class="author-name">Prof. Anjit Raja R</div>
+          <div class="author-title-text">Innovation &amp; Startup Cell, Rathinam College</div>
+          <a href="https://in.linkedin.com/in/profanjitraja" target="_blank" class="author-linkedin">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+            linkedin.com/in/profanjitraja
+          </a>
+        </div>
+      </div>
+
+      <div class="meta-sep"></div>
+
+      <div class="meta-item">
+        <strong>Published</strong>
+        April 2026
+      </div>
+
+      <div class="meta-sep"></div>
+
+      <div class="meta-item">
+        <strong>Domain</strong>
+        AI Policy · Global Tech
+      </div>
+
+      <div class="meta-sep"></div>
+
+      <div class="meta-item">
+        <strong>Read Time</strong>
+        ~18 minutes
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Tri-colour rule -->
+<div class="chapter-rule"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     BODY
+═══════════════════════════════════════════════════════════════ -->
+<main class="body-wrap">
+
+  <!-- Abstract -->
+  <div class="abstract-box">
+    <div class="abstract-label">Abstract</div>
+    <p class="abstract-text">
+      Between January 2025 and early 2026, the global artificial intelligence landscape underwent one of its most consequential structural disruptions in a decade. Chinese AI laboratories — operating under sustained semiconductor export restrictions and a deliberately cultivated culture of algorithmic efficiency — produced a succession of open-weight large language models that matched, and in specific benchmarks exceeded, the performance of leading proprietary Western systems. This paper provides a comprehensive, evidence-based analysis of this phenomenon, profiling seven major Chinese model families, documenting market share trajectories, and interrogating the geopolitical architecture underpinning this transition.
+    </p>
+    <div class="keywords"><strong>Keywords:</strong> Chinese AI, open-weight models, DeepSeek, Qwen, Mixture-of-Experts, export controls, LLM geopolitics, open-source strategy</div>
+  </div>
+
+  <!-- STAT CARDS -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-num">30%</div>
+      <div class="stat-label">Global open-source AI market share claimed by Chinese models by end 2025</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">700M+</div>
+      <div class="stat-label">Downloads of Alibaba Qwen family on Hugging Face by January 2026</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">63%</div>
+      <div class="stat-label">Of all new fine-tuned models on Hugging Face based on Chinese LLMs (Aug 2025)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">$600B</div>
+      <div class="stat-label">Nvidia market cap erased in a single session following DeepSeek R1's release</div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 1 ─────────────────────────────────────────────── -->
+  <div class="section-number">§ 01 &nbsp;Introduction</div>
+  <h2 class="section-title">A January Morning That Rewrote the Rules</h2>
+
+  <p class="body">
+    Few technological ruptures arrive with the clarity of January 20, 2025. On that date — coinciding, with eerie symbolism, with the inauguration of a new US presidential administration — a Hangzhou-based quantitative hedge fund's AI subsidiary named DeepSeek released its R1 reasoning model to the public under a permissive MIT open-source licence. Within seven days, the DeepSeek mobile application had displaced OpenAI's ChatGPT as the most downloaded free application on Apple's US App Store. Within a single trading session, Nvidia's market capitalisation contracted by more than $600 billion, the largest single-day valuation loss in corporate history. The "DeepSeek moment" had arrived, and with it, a forced revision of assumptions about where frontier AI could be built, by whom, and at what cost.
+  </p>
+  <p class="body">
+    This paper proceeds from the conviction that the DeepSeek moment was not an isolated incident but the visible apex of a deeper structural shift in the global AI order — one with three interlocking dimensions. First, a <em>technological</em> dimension: Chinese laboratories have developed architectural innovations, most notably the Mixture-of-Experts (MoE) paradigm, multi-token prediction, and reinforcement-learning-based reasoning pipelines, that allow them to achieve near-frontier capability with a fraction of the compute previously assumed necessary. Second, a <em>strategic</em> dimension: Chinese companies have embraced open-weight model release as a deliberate go-to-market and standard-setting mechanism, creating a self-reinforcing adoption flywheel. Third, a <em>geopolitical</em> dimension: US chip export controls, intended to constrain Chinese AI progress, have produced the paradoxical effect of incentivising the efficiency-first engineering culture that now challenges American market leadership.
+  </p>
+
+  <!-- TIMELINE -->
+  <div class="timeline">
+    <div class="timeline-heading">Key milestones — Chinese AI Ascent (2024–2026)</div>
+    <div class="timeline-track">
+      <div class="timeline-item">
+        <div class="timeline-date">Dec 2024</div>
+        <div class="timeline-text"><strong>DeepSeek-V3</strong> released — 671B MoE model, trained at ~$5.5M, matches GPT-4o on key benchmarks.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Jan 20, 2025</div>
+        <div class="timeline-text"><strong>DeepSeek-R1</strong> drops under MIT licence; Nvidia loses $600B in a single day; R1 becomes #1 free app on US App Store.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Mar 2025</div>
+        <div class="timeline-text"><strong>Manus</strong> — Chinese startup Butterfly Effect launches first general-purpose AI agent, going viral globally.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Sep 2025</div>
+        <div class="timeline-text"><strong>Qwen overtakes Llama</strong> — Alibaba's model family becomes the most downloaded on Hugging Face, globally.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Aug 2025</div>
+        <div class="timeline-text"><strong>OpenAI releases open-weight models</strong> for the first time in nearly six years — a direct competitive response to Chinese open-source dominance.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Early 2026</div>
+        <div class="timeline-text"><strong>Kimi K2.5</strong> by Moonshot AI approaches Claude Opus performance at 1/7th the price. Chinese models collectively approach 30% global token usage.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 2 ─────────────────────────────────────────────── -->
+  <div class="s-divider"><div class="s-divider-line"></div><div class="s-divider-ornament"><span style="background:var(--accent)"></span><span style="background:var(--gold)"></span><span style="background:var(--teal)"></span></div><div class="s-divider-line"></div></div>
+
+  <div class="section-number">§ 02 &nbsp;Landscape Survey</div>
+  <h2 class="section-title">China's AI Model Ecosystem: Seven Families That Changed the Game</h2>
+
+  <p class="body">
+    It would be a category error to reduce China's open-weight AI emergence to a single laboratory or a single model. Stanford HAI researchers, in their landmark December 2025 analysis, explicitly cautioned against this framing, noting that "Chinese-made open-weight models are unavoidable in the global competitive AI landscape" and that "the ecosystem runs far broader and deeper than most people realise." What follows is a structured survey of the principal actors reshaping global AI infrastructure.
+  </p>
+
+  <h3 class="subsection-title">2.1 &nbsp;DeepSeek — The Efficiency Pioneer</h3>
+  <p class="body">
+    DeepSeek, a spin-off of the Hangzhou quantitative trading firm High-Flyer Capital Management, established itself as the paradigmatic case study in constraint-driven innovation. Its V3 model employs a Mixture-of-Experts architecture housing 671 billion parameters, of which only 37 billion are activated per inference pass — a design that delivers the capability of a massive model at the computational cost of a far smaller one. The model was trained on an estimated cluster of approximately 2,000 Nvidia H800 chips at a reported cost of around $5.5 million, compared to the hundreds of millions routinely associated with comparable US frontier models.
+  </p>
+
+  <blockquote class="pullquote">
+    <p>"Money has never been the problem for us; bans on shipments of advanced chips are the problem."</p>
+    <cite>Liang Wenfeng, Founder, DeepSeek</cite>
+  </blockquote>
+
+  <p class="body">
+    The subsequent R1 reasoning model introduced a reinforcement-learning-based chain-of-thought training methodology that delivered state-of-the-art performance on mathematical benchmarks. DeepSeek's V3.2 later achieved 96.0% on the American Invitational Mathematics Examination 2025, edging above OpenAI's GPT-5 at 94.6%.
+  </p>
+
+  <h3 class="subsection-title">2.2 &nbsp;Alibaba Qwen — The Proliferation Strategy</h3>
+  <p class="body">
+    Alibaba Cloud's Qwen family represents perhaps the most consequential open-weight model programme in terms of breadth of global impact. The Qwen lineage predates DeepSeek's public breakthrough by years. By January 2026, the family had accumulated over 700 million downloads on Hugging Face, surpassing Meta's Llama. Qwen 3, launched in 2026, extends capabilities to true multimodality — handling text, images, and video — trained on over 20 trillion tokens and priced at $0.38 per million tokens. By August 2025, 40% of new Hugging Face model derivatives were built on Qwen, while Llama had fallen to approximately 15%.
+  </p>
+
+  <h3 class="subsection-title">2.3 &nbsp;Moonshot AI's Kimi K2.5 — The Price-Parity Challenger</h3>
+  <p class="body">
+    Released in early 2026, Kimi K2.5 arrived as a pointed demonstration that DeepSeek's compute-efficient approach is replicable. Built on a sparse MoE architecture with a nominal one-trillion-parameter count, it approached the performance of Anthropic's Claude Opus 4.6 at approximately one-seventh of the price. Within days of its release, it became the most widely used AI model by total token volume processed through OpenClaw, a viral open-source agent framework — validating cost as the dominant adoption driver in a competitive market.
+  </p>
+
+  <h3 class="subsection-title">2.4 &nbsp;ByteDance, Tencent, Baidu, Z.ai</h3>
+  <p class="body">
+    ByteDance's Doubao 1.5 Pro, deployed across TikTok's vast ecosystem, and Tencent's Hunyuan family, integrated into over 200 services including WeChat, demonstrate the force-multiplying effect of platform distribution. Hunyuan Turbo S distinguished itself with sub-second response latency. Baidu's Ernie 4.5, after years of a closed strategy, has progressively opened access to all users. Z.ai's GLM-based coding tools report heavy usage concentrated in the United States, India, Japan, Brazil, and the United Kingdom — a distribution underscoring the globally dispersed nature of Chinese open-model adoption.
+  </p>
+
+  <!-- TABLE 1 -->
+  <div class="table-wrap">
+    <div class="table-label">Table 1</div>
+    <div class="table-caption">Key Chinese AI Models — Architectural and Commercial Profile (2025–2026)</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Developer</th>
+          <th>Architecture</th>
+          <th>Context</th>
+          <th>MMLU</th>
+          <th>Price ($/M tok)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>DeepSeek-V3</strong></td><td>DeepSeek</td><td>MoE 671B (37B active)</td><td>128K</td><td>88.5</td><td>$0.14 / $0.28</td></tr>
+        <tr><td><strong>Qwen 3 (MoE)</strong></td><td>Alibaba Cloud</td><td>MoE 235B (22B active)</td><td>128K</td><td>83.0*</td><td>$0.38</td></tr>
+        <tr><td><strong>Kimi K2.5</strong></td><td>Moonshot AI</td><td>Sparse MoE ~1T</td><td>200K</td><td>~88 est.</td><td>~1/7 Claude</td></tr>
+        <tr><td><strong>Doubao 1.5 Pro</strong></td><td>ByteDance</td><td>Sparse MoE</td><td>128K</td><td>~85 est.</td><td>Competitive</td></tr>
+        <tr><td><strong>GLM-4 Plus</strong></td><td>Z.ai</td><td>Dense Transformer</td><td>128K</td><td>~82 est.</td><td>Subscription</td></tr>
+        <tr><td><strong>Hunyuan T</strong></td><td>Tencent</td><td>MoE Hybrid</td><td>32K</td><td>~80 est.</td><td>API + integrated</td></tr>
+        <tr><td><strong>Ernie 4.5</strong></td><td>Baidu</td><td>Dense Transformer</td><td>64K</td><td>~79 est.</td><td>Freemium</td></tr>
+      </tbody>
+    </table>
+    <div class="table-source">Sources: ZenMux (2026), Alibaba Cloud technical reports, Moonshot AI, Hugging Face model cards. *MMLU-Pro score.</div>
+  </div>
+
+  <!-- ── SECTION 3 ─────────────────────────────────────────────── -->
+  <div class="s-divider"><div class="s-divider-line"></div><div class="s-divider-ornament"><span style="background:var(--accent)"></span><span style="background:var(--gold)"></span><span style="background:var(--teal)"></span></div><div class="s-divider-line"></div></div>
+
+  <div class="section-number">§ 03 &nbsp;Architecture &amp; Benchmarks</div>
+  <h2 class="section-title">Algorithmic Innovations and Performance Reality</h2>
+
+  <h3 class="subsection-title">3.1 &nbsp;The Mixture-of-Experts Paradigm</h3>
+  <p class="body">
+    The defining architectural theme of China's frontier AI generation is the Mixture-of-Experts framework. Unlike dense transformers, which activate all parameters for every input token, MoE systems route each token to a subset of specialised "expert" sub-networks. A model with 671 billion total parameters may consume the computational resources of a 37-billion-parameter dense model during inference. Chinese laboratories have refined this to a degree that effectively redefines the efficiency frontier.
+  </p>
+  <p class="body">
+    DeepSeek's auxiliary-loss-free load balancing and its multi-head latent attention mechanism — both described in publicly released technical papers — represent genuine algorithmic contributions. The latter compresses the key-value cache that accumulates during long-context generation, enabling longer effective context windows at lower memory cost. CSIS analysts note these techniques "have drawn significant attention in the research community" and are being adopted globally.
+  </p>
+
+  <div class="info-box">
+    <div class="info-box-title">What is Mixture-of-Experts (MoE)?</div>
+    <p>In a standard "dense" neural network, every parameter activates on every input. MoE models divide parameters into specialised groups ("experts"). A router network selects only the most relevant 2–8 experts for each token processed. Result: 671B total parameters with only 37B active at inference time — the computational cost of a small model, the expressive power of a massive one.</p>
+  </div>
+
+  <h3 class="subsection-title">3.2 &nbsp;Comparative Benchmark Performance</h3>
+
+  <!-- BAR CHART -->
+  <div class="bar-chart">
+    <div class="bar-chart-title">AIME 2025 Mathematics Score — Select Models</div>
+    <div class="bar-row">
+      <div class="bar-name">DeepSeek V3.2</div>
+      <div class="bar-track"><div class="bar-fill" style="width:96%;background:var(--accent);"><span class="bar-val">96.0%</span></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-name">OpenAI GPT-5</div>
+      <div class="bar-track"><div class="bar-fill" style="width:94.6%;background:#1a3a6b;"><span class="bar-val">94.6%</span></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-name">DeepSeek R1</div>
+      <div class="bar-track"><div class="bar-fill" style="width:97%;background:#8a0016;"><span class="bar-val">97.3%*</span></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-name">Qwen 3 MoE</div>
+      <div class="bar-track"><div class="bar-fill" style="width:90%;background:var(--gold-2);"><span class="bar-val">~90%</span></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-name">Claude Opus 4.6</div>
+      <div class="bar-track"><div class="bar-fill" style="width:93%;background:var(--teal);"><span class="bar-val">~93%</span></div></div>
+    </div>
+  </div>
+
+  <!-- TABLE 2 -->
+  <div class="table-wrap">
+    <div class="table-label">Table 2</div>
+    <div class="table-caption">Comparative Benchmark Performance — Chinese and Western Frontier Models (2025–2026)</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>MATH-500</th>
+          <th>HumanEval</th>
+          <th>LiveCodeBench</th>
+          <th>Arena-Hard</th>
+          <th>AIME 2025</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>DeepSeek-V3.2</strong></td><td>92.4</td><td>87.1</td><td>—</td><td>~92</td><td>96.0</td></tr>
+        <tr><td><strong>DeepSeek-R1</strong></td><td>97.3*</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td><strong>Qwen 3 (MoE)</strong></td><td>90.2</td><td>88.6</td><td>92.7</td><td>89.4</td><td>—</td></tr>
+        <tr><td><strong>GPT-5 (OpenAI)</strong></td><td>~94</td><td>~90</td><td>—</td><td>~95</td><td>94.6</td></tr>
+        <tr><td><strong>Claude Opus 4.6</strong></td><td>~93</td><td>~88</td><td>—</td><td>~94</td><td>—</td></tr>
+        <tr><td><strong>Kimi K2.5</strong></td><td>~89</td><td>—</td><td>—</td><td>~88</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <div class="table-source">Note: * R1 reasoning benchmark using chain-of-thought evaluation. ~ = estimated or partially self-reported. Sources: ZenMux (2026), Stanford HAI AI Index (2025), CSIS (2025), NewMR (2026).</div>
+  </div>
+
+  <!-- ── SECTION 4 ─────────────────────────────────────────────── -->
+  <div class="s-divider"><div class="s-divider-line"></div><div class="s-divider-ornament"><span style="background:var(--accent)"></span><span style="background:var(--gold)"></span><span style="background:var(--teal)"></span></div><div class="s-divider-line"></div></div>
+
+  <div class="section-number">§ 04 &nbsp;Market Adoption</div>
+  <h2 class="section-title">Global Market Adoption: Quantifying the Shift</h2>
+
+  <p class="body">
+    Perhaps the most striking empirical feature of the 2025–2026 AI period is not the performance of individual models but the velocity of their global adoption. Multiple independent data sources converge on a similar — and remarkable — trajectory.
+  </p>
+  <p class="body">
+    An empirical study by OpenRouter, a third-party AI model aggregation platform, tracking 100 trillion tokens of API usage, found that Chinese open-source LLMs' global share rose from 1.2% in late 2024 to nearly 30% over subsequent months. A separate RAND Corporation study found that Chinese LLM market share jumped from 3% to 13% in just two months following DeepSeek's January 2025 release. By August 2025, according to Stanford HAI's DigiChina brief, Chinese developers accounted for 17.1% of all Hugging Face model downloads, edging out US developers at 15.8%.
+  </p>
+
+  <!-- TABLE 3 -->
+  <div class="table-wrap">
+    <div class="table-label">Table 3</div>
+    <div class="table-caption">Chinese Open-Source AI Model Global Market Share Trajectory (2024–2026)</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Period</th>
+          <th>Global Share (Chinese Open Models)</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Late 2024</td><td>~1.2%</td><td>OpenRouter / Andreessen Horowitz</td></tr>
+        <tr><td>Jan–Feb 2025 (post-R1)</td><td>~3–13%</td><td>RAND Corporation</td></tr>
+        <tr><td>August 2025</td><td>~10–15%</td><td>Nikkei; TrendForce</td></tr>
+        <tr><td>Nov–Dec 2025</td><td>~15–30%</td><td>South China Morning Post; OpenRouter</td></tr>
+        <tr><td>Early 2026 (est.)</td><td>~25–35%</td><td>Andreessen Horowitz; Hugging Face</td></tr>
+      </tbody>
+    </table>
+    <div class="table-source">Sources: OpenRouter / a16z State of AI Report (2025); RAND RRA4355-1 (2026); TrendForce (Jan 2026); Stanford HAI DigiChina (Dec 2025); SCMP (Dec 2025).</div>
+  </div>
+
+  <p class="body">
+    The geographic breadth of this adoption deserves emphasis. Among startups pitching with open-source AI stacks, Andreessen Horowitz General Partner Martin Casado estimated approximately an 80% probability the underlying model is Chinese. Singapore's national AI programme has adopted Qwen as the foundation for its flagship model. Six of the top ten AI models used by Japanese companies are built on DeepSeek or Qwen. The global demand pattern is concentrated not in China but in the United States and China in roughly equal measure, followed by India, Japan, Brazil, and the United Kingdom.
+  </p>
+
+  <!-- ── SECTION 5 ─────────────────────────────────────────────── -->
+  <div class="s-divider"><div class="s-divider-line"></div><div class="s-divider-ornament"><span style="background:var(--accent)"></span><span style="background:var(--gold)"></span><span style="background:var(--teal)"></span></div><div class="s-divider-line"></div></div>
+
+  <div class="section-number">§ 05 &nbsp;Geopolitics</div>
+  <h2 class="section-title">Chips, Controls, and the Architecture of Competition</h2>
+
+  <h3 class="subsection-title">5.1 &nbsp;The Export Control Paradox</h3>
+  <p class="body">
+    The story of Chinese AI's ascent cannot be told in isolation from the US semiconductor export control regime. Beginning in October 2022 and progressively tightened through March 2025, the Bureau of Industry and Security imposed escalating restrictions on advanced AI accelerators exported to China. The intended effect was clear: constrain China's ability to train and deploy advanced models by restricting access to the computational substrate. The actual outcome has been considerably more complex.
+  </p>
+  <p class="body">
+    As one policy analyst summarised: "The goal was to slow China's ability to train advanced models. Instead, it forced Chinese companies to optimise. DeepSeek-V3 exists partly because Chinese engineers couldn't rely on throwing more compute at every problem." The paradox is elegant: the restriction designed to widen the technological gap between US and Chinese AI may have narrowed the efficiency gap, while doing comparatively little to constrain capability parity. A CSIS analysis concludes that while controls "have severely hindered China's chip manufacturing industry," they appear to have "limited China's ability to deploy AI at scale" more than its ability to train cutting-edge models.
+  </p>
+
+  <h3 class="subsection-title">5.2 &nbsp;The Tri-Polar AI World</h3>
+  <p class="body">
+    A useful analytical frame for the current landscape is that of a tri-polar competitive order. The United States leads in breakthrough frontier model performance and in aggregate compute — as of mid-2025, US entities controlled approximately 74% of global AI computing power. China dominates cost-efficient open-source scaling and physical-world AI deployment. Europe, led by France's Mistral AI, is carving out a sovereignty-focused niche — "Sovereign AI" that operates on domestic infrastructure and conforms to GDPR and the EU AI Act.
+  </p>
+
+  <!-- GEO GRID -->
+  <div class="geo-grid">
+    <div class="geo-card geo-card-us">
+      <div class="geo-card-head">🇺🇸 United States</div>
+      <ul>
+        <li>74% of global AI compute (mid-2025)</li>
+        <li>Leads frontier model performance</li>
+        <li>GPT-5, Claude, Gemini: premium closed systems</li>
+        <li>Largest VC investment base</li>
+        <li>Export control strategy (BIS, Entity List)</li>
+      </ul>
+    </div>
+    <div class="geo-card geo-card-cn">
+      <div class="geo-card-head">🇨🇳 China</div>
+      <ul>
+        <li>~30% open-source token share globally</li>
+        <li>Efficiency-first MoE architectures</li>
+        <li>Open-weight as standard-setting strategy</li>
+        <li>700M+ Qwen downloads</li>
+        <li>Physical AI: robotics, smart manufacturing</li>
+      </ul>
+    </div>
+    <div class="geo-card geo-card-eu">
+      <div class="geo-card-head">🇪🇺 Europe</div>
+      <ul>
+        <li>Mistral AI: "Sovereign AI" positioning</li>
+        <li>GDPR + EU AI Act compliance leader</li>
+        <li>Preferred for regulated industries</li>
+        <li>On-premise deployment focus</li>
+        <li>Growing role in global AI governance</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TABLE 4 -->
+  <div class="table-wrap">
+    <div class="table-label">Table 4</div>
+    <div class="table-caption">US–China Strategic AI Dimensions: Comparative Assessment (2025–2026)</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>United States</th>
+          <th>China's Position</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Chip Supply</strong></td><td>Nvidia leads; ~74% global AI compute</td><td>Huawei Ascend 910C; chip smuggling; carbon nanotube R&amp;D</td></tr>
+        <tr><td><strong>Export Controls</strong></td><td>Entity List; BIS restrictions; oscillating H20/H200 policy</td><td>Efficiency innovation forced; DeepSeek-V3 built under constraint</td></tr>
+        <tr><td><strong>Open vs. Closed</strong></td><td>OpenAI, Google: predominantly closed</td><td>DeepSeek, Qwen, Kimi: MIT/Apache open-weight</td></tr>
+        <tr><td><strong>Global Adoption</strong></td><td>~70% proprietary Western share globally</td><td>~30% open-source Chinese share, rapidly rising</td></tr>
+        <tr><td><strong>Talent &amp; Investment</strong></td><td>Silicon Valley; ~$150B+ VC pipeline</td><td>Tsinghua, PKU; $150B+ state investment since 2014</td></tr>
+        <tr><td><strong>Security</strong></td><td>CAISI tests favour US models on jailbreak resistance</td><td>DeepSeek 12× more vulnerable to jailbreaks (CAISI, 2025)</td></tr>
+      </tbody>
+    </table>
+    <div class="table-source">Sources: Atlantic Council (Dec 2025); CFR (Dec 2025); Stanford HAI (Dec 2025); CSIS (May 2025); CAISI (2025).</div>
+  </div>
+
+  <!-- ── SECTION 6 ─────────────────────────────────────────────── -->
+  <div class="s-divider"><div class="s-divider-line"></div><div class="s-divider-ornament"><span style="background:var(--accent)"></span><span style="background:var(--gold)"></span><span style="background:var(--teal)"></span></div><div class="s-divider-line"></div></div>
+
+  <div class="section-number">§ 06 &nbsp;Risks &amp; Limitations</div>
+  <h2 class="section-title">Security, Censorship, and the Limits of the Data</h2>
+
+  <p class="body">
+    The open-weight nature of Chinese models introduces a specific security risk profile. Testing conducted by the US government's Centre for AI Safety and Innovation found that DeepSeek models are, on average, twelve times more susceptible to jailbreaking attacks than comparable US models. This is not merely theoretical: open-weight models can be downloaded, fine-tuned, and deployed without any guardrails that a hosted API provider would enforce.
+  </p>
+  <p class="body">
+    Chinese open-weight models, when accessed via hosted Chinese APIs, reliably refuse engagement with politically sensitive topics including Tiananmen Square, Taiwan's sovereign status, and Xinjiang. However, locally deployed versions can be fine-tuned to modify these constraints, creating a complex governance landscape. Private investment in Chinese AI has also contracted sharply — from approximately $16 billion in 2018 to $5 billion in 2025 — as capital controls and geopolitical risk deter international capital. The long-term commercial viability of open-weight model release, which generates no direct revenue from the models themselves, remains unproven at scale.
+  </p>
+
+  <!-- ── CONCLUSION ─────────────────────────────────────────────── -->
+  <div class="s-divider"><div class="s-divider-line"></div><div class="s-divider-ornament"><span style="background:var(--accent)"></span><span style="background:var(--gold)"></span><span style="background:var(--teal)"></span></div><div class="s-divider-line"></div></div>
+
+  <div class="section-number">§ 07 &nbsp;Conclusion</div>
+  <h2 class="section-title">In the Economy of Open Intelligence, Efficiency Is the Currency</h2>
+
+  <p class="body">
+    The period from January 2025 to early 2026 will be recorded as the moment when the assumption of a stable US monopoly on frontier AI development became untenable. Chinese open-weight models — led by DeepSeek, Qwen, and Kimi, but supported by a broad and deepening ecosystem — have achieved functional benchmark parity with leading Western systems, adopted open-weight release as a mechanism for global standard-setting, and built an adoption base that, in some metrics, now outpaces their US counterparts. The market share trajectory from 1.2% to nearly 30% of global token usage within a single year is without precedent in the AI industry's history.
+  </p>
+  <p class="body">
+    This does not mean US AI leadership has ended. The United States retains decisive advantages in aggregate compute, frontier model investment, and deployment infrastructure. But it does mean that leadership can no longer be assumed — it must be actively earned, through continued investment in algorithmic and hardware innovation, thoughtful recalibration of export control strategy, and renewed attention to the global ecosystem dynamics that determine which models become the infrastructure upon which the next generation of AI applications is built.
+  </p>
+
+  <div class="conclusion-box">
+    <div class="conclusion-label">Final Reflection</div>
+    <p class="conclusion-text">
+      Export controls constrained China's access to silicon. They did not constrain its access to mathematics, talent, or ambition. The engineers who could not buy faster chips instead wrote better algorithms. The models that resulted — open, cheap, and increasingly capable — are now the foundation upon which a significant and growing share of the world's AI applications are built. This is the central irony of the 2025 AI moment: the most consequential technology competition of the decade was shaped as much by what China was denied as by what it was given.
+    </p>
+    <p class="conclusion-text" style="font-style:italic; opacity:0.7;">
+      In the economy of open intelligence, efficiency is the currency. China has proven it knows how to spend it.
+    </p>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="references-wrap">
+    <div class="references-title">References</div>
+    <div class="ref-item" data-n="1.">Allen, G. C. (2025, March). DeepSeek, Huawei, export controls, and the future of the US–China AI race. <em>Center for Strategic and International Studies.</em></div>
+    <div class="ref-item" data-n="2.">Atlantic Council. (2025, December). Why exporting advanced chips to China endangers US AI leadership. <em>Atlantic Council Dispatches.</em></div>
+    <div class="ref-item" data-n="3.">Chen, C. (2026, February 12). What's next for Chinese open-source AI. <em>MIT Technology Review.</em></div>
+    <div class="ref-item" data-n="4.">Council on Foreign Relations. (2025, December). China's AI chip deficit: Why Huawei can't catch Nvidia. <em>CFR Policy Briefs.</em></div>
+    <div class="ref-item" data-n="5.">CSIS. (2025, May). The limits of chip export controls in meeting the China challenge. <em>Center for Strategic and International Studies.</em></div>
+    <div class="ref-item" data-n="6.">OpenRouter &amp; Andreessen Horowitz. (2025). State of AI report: Open-source LLM usage analysis. <em>OpenRouter Research.</em></div>
+    <div class="ref-item" data-n="7.">RAND Corporation. (2026). US–China competition for artificial intelligence markets (RRA4355-1). <em>RAND Research Reports.</em></div>
+    <div class="ref-item" data-n="8.">Stanford HAI &amp; DigiChina. (2025, December). Beyond DeepSeek: China's diverse open-weight AI ecosystem and its policy implications. <em>Stanford Human-Centered AI Policy Briefs.</em></div>
+    <div class="ref-item" data-n="9.">South China Morning Post. (2025, December). China's open-source models make up 30% of global AI usage. <em>SCMP.</em></div>
+    <div class="ref-item" data-n="10.">TrendForce. (2026, January). Chinese AI models reportedly hit ~15% global share in Nov. 2025. <em>TrendForce News.</em></div>
+    <div class="ref-item" data-n="11.">ZenMux. (2026, January). Top Chinese AI models in 2026: Capabilities, use cases, and performance. <em>ZenMux Research Blog.</em></div>
+    <div class="ref-item" data-n="12.">Zhang, I. (2025, December). Chinese AI in 2025, wrapped. <em>ChinaTalk.</em></div>
+    <div class="ref-item" data-n="13.">ITIF. (2025, October). Backfire: Export controls helped Huawei and hurt US firms. <em>Information Technology and Innovation Foundation.</em></div>
+  </div>
+
+</main>
+
+<!-- Chapter rule footer -->
+<div class="chapter-rule"></div>
+
+<!-- FOOTER -->
+<footer class="article-footer">
+  <div class="footer-left">
+    <div class="footer-brand">Innovation &amp; Startup Cell</div>
+    <div class="footer-sub">Rathinam College of Arts &amp; Science · Coimbatore · © 2026</div>
+  </div>
+  <div class="footer-copy">
+    Authored by Prof. Anjit Raja R<br>
+    <a href="https://in.linkedin.com/in/profanjitraja" target="_blank" style="color:rgba(255,255,255,0.35); font-size:10px;">linkedin.com/in/profanjitraja</a><br>
+    <a href="https://rcasinnovationstartupcell.blogspot.com/" target="_blank" style="color:rgba(255,255,255,0.35); font-size:10px;">Visit our Blog</a><br>
+    All rights reserved. For reprint permissions contact the ISC.
+  </div>
+</footer>
+
+</body>
+</html>

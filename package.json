@@ -1,0 +1,32 @@
+{
+  "name": "rcas-innovation-cell-magazine-2026",
+  "version": "1.0.0",
+  "description": "Professional magazine portal for Innovation & Startup Cell at Rathinam College of Arts & Science",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8080",
+    "dev": "python -m http.server 8080",
+    "build": "echo 'Static site - no build required'"
+  },
+  "keywords": [
+    "magazine",
+    "innovation",
+    "startup",
+    "rcas",
+    "rathinam",
+    "research",
+    "publications"
+  ],
+  "author": "Prof. Anjit Raja R",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RCAS-InnovationandStartupCell/RCAS-Innovation-Cell-Magazine-2026"
+  },
+  "homepage": "https://rcas-innovation-cell-magazine-2026.onrender.com",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

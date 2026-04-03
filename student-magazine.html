@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Magazine - Innovation & Startup Cell</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e3a5f;
+            --secondary-color: #d4af37;
+            --accent-color: #8b0000;
+            --text-dark: #2c3e50;
+            --text-light: #6c757d;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #8b0000 0%, #cd5c5c 100%);
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            background: transparent;
+            justify-content: center;
+            margin-bottom: 0;
+        }
+
+        .breadcrumb-item a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item.active {
+            color: white;
+        }
+
+        .article-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .article-image {
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .article-content {
+            padding: 30px;
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .article-excerpt {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: var(--bg-light);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .read-more {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 10px;
+            color: var(--accent-color);
+        }
+
+        .featured-section {
+            background: white;
+            padding: 60px 0;
+        }
+
+        .featured-article {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #2c5282 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-article::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .featured-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-excerpt {
+            font-size: 18px;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-featured {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-featured:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            color: var(--primary-color);
+        }
+
+        .back-to-home {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-home:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .featured-title {
+                font-size: 24px;
+            }
+            
+            .article-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Student Magazine</li>
+                </ol>
+            </nav>
+            <h1 class="page-title">Student Magazine</h1>
+            <p class="lead">Innovative ideas and groundbreaking research from our talented students</p>
+        </div>
+    </header>
+
+    <!-- Featured Article -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="featured-article">
+                <div class="featured-badge">
+                    <i class="fas fa-star"></i> Featured Article
+                </div>
+                <h2 class="featured-title">AI-Powered Agricultural Solutions for Sustainable Farming</h2>
+                <p class="featured-excerpt">
+                    A revolutionary approach to precision farming using machine learning algorithms and IoT sensors 
+                    to optimize crop yield while minimizing environmental impact. This student-led project demonstrates 
+                    how technology can transform traditional agriculture into a sustainable, data-driven industry.
+                </p>
+                <a href="#" class="btn-featured">
+                    <i class="fas fa-book-open"></i> Read Full Article
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="article-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 class="mb-4">Latest Student Publications</h2>
+                    
+                    <!-- Article 1 -->
+                    <div class="article-card">
+                        <div class="article-image">
+                            <i class="fas fa-robot fa-3x"></i>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title">Machine Learning Applications in Healthcare Diagnostics</h3>
+                            <div class="article-meta">
+                                <div class="article-author">
+                                    <div class="author-avatar">SK</div>
+                                    <div>
+                                        <div>Sanjay Kumar</div>
+                                        <small>Computer Science Engineering</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <i class="fas fa-calendar"></i> April 15, 2026
+                                </div>
+                            </div>
+                            <p class="article-excerpt">
+                                An exploration of deep learning models for early disease detection, focusing on 
+                                neural networks that can identify patterns in medical imaging with 95% accuracy, 
+                                potentially revolutionizing diagnostic procedures in rural healthcare settings.
+                            </p>
+                            <div class="article-tags">
+                                <span class="tag">Machine Learning</span>
+                                <span class="tag">Healthcare</span>
+                                <span class="tag">AI</span>
+                                <span class="tag">Innovation</span>
+                            </div>
+                            <a href="#" class="read-more">
+                                Read More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Article 2 -->
+                    <div class="article-card">
+                        <div class="article-image">
+                            <i class="fas fa-leaf fa-3x"></i>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title">Sustainable Energy Solutions: Solar-Powered Smart Cities</h3>
+                            <div class="article-meta">
+                                <div class="article-author">
+                                    <div class="author-avatar">RP</div>
+                                    <div>
+                                        <div>Riya Patel</div>
+                                        <small>Electrical Engineering</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <i class="fas fa-calendar"></i> April 10, 2026
+                                </div>
+                            </div>
+                            <p class="article-excerpt">
+                                A comprehensive study on implementing solar energy grids in urban environments, 
+                                featuring innovative battery storage solutions and smart grid management systems 
+                                that could reduce carbon emissions by 40% in metropolitan areas.
+                            </p>
+                            <div class="article-tags">
+                                <span class="tag">Sustainable Energy</span>
+                                <span class="tag">Smart Cities</span>
+                                <span class="tag">Solar Power</span>
+                                <span class="tag">Environment</span>
+                            </div>
+                            <a href="#" class="read-more">
+                                Read More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Article 3 -->
+                    <div class="article-card">
+                        <div class="article-image">
+                            <i class="fas fa-mobile-alt fa-3x"></i>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title">Blockchain-Based Supply Chain Management</h3>
+                            <div class="article-meta">
+                                <div class="article-author">
+                                    <div class="author-avatar">AS</div>
+                                    <div>
+                                        <div>Ahmed Shah</div>
+                                        <small>Information Technology</small>
+                                    </div>
+                                </div>
+                                <div>
+                                    <i class="fas fa-calendar"></i> April 5, 2026
+                                </div>
+                            </div>
+                            <p class="article-excerpt">
+                                Development of a decentralized supply chain management system using blockchain 
+                                technology to ensure transparency, reduce fraud, and optimize logistics for small 
+                                to medium enterprises in the manufacturing sector.
+                            </p>
+                            <div class="article-tags">
+                                <span class="tag">Blockchain</span>
+                                <span class="tag">Supply Chain</span>
+                                <span class="tag">Fintech</span>
+                                <span class="tag">Innovation</span>
+                            </div>
+                            <a href="#" class="read-more">
+                                Read More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Archive</h5>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-calendar-alt"></i> April 2026
+                                    <span class="badge bg-primary float-end">12</span>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-calendar-alt"></i> March 2026
+                                    <span class="badge bg-primary float-end">15</span>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-calendar-alt"></i> February 2026
+                                    <span class="badge bg-primary float-end">10</span>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-calendar-alt"></i> January 2026
+                                    <span class="badge bg-primary float-end">18</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Popular Tags</h5>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="tag">AI/ML</span>
+                                <span class="tag">IoT</span>
+                                <span class="tag">Blockchain</span>
+                                <span class="tag">Robotics</span>
+                                <span class="tag">Sustainability</span>
+                                <span class="tag">Healthcare</span>
+                                <span class="tag">Fintech</span>
+                                <span class="tag">Education</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Submit Your Article</h5>
+                            <p>Share your innovative research and projects with our community.</p>
+                            <button class="btn btn-primary w-100">
+                                <i class="fas fa-paper-plane"></i> Submit Article
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Home Button -->
+    <a href="index.html" class="back-to-home">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
